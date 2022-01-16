@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react"
 
 import logo from "./logo.svg"
-import "./App.css"
+import "./index.css"
 
 function App() {
     return (

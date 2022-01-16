@@ -1,16 +1,15 @@
-import { ChakraProvider } from "@chakra-ui/react"
 import ReactDOM from "react-dom"
+import { ChakraProvider } from "@chakra-ui/react"
+import { Provider } from "react-redux"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { PersistGate } from "redux-persist/integration/react"
 
 import getStoreAndPersistor from "core/redux/store"
-import Counter from "Counter"
+import Counter from "pages/counter"
+import Home from "pages/home"
 
-import App from "./App"
-import "./index.css"
-import theme from "./theme"
-import GlobalStyle from "./theme/globalStyle"
-import { Provider } from "react-redux"
+import theme from "theme"
+import GlobalStyle from "theme/globalStyle"
 
 const { store, persistor } = getStoreAndPersistor()
 
@@ -22,7 +21,7 @@ ReactDOM.render(
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/">
-                            <App />
+                            <Home />
                         </Route>
                         <Route path="/about">
                             <div>About</div>
