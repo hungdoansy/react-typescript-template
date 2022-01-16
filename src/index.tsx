@@ -1,26 +1,40 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import ReactDOM from "react-dom"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { PersistGate } from "redux-persist/integration/react"
+
+import getStoreAndPersistor from "core/redux/store"
+import Counter from "Counter"
 
 import App from "./App"
 import "./index.css"
 import theme from "./theme"
 import GlobalStyle from "./theme/globalStyle"
+import { Provider } from "react-redux"
+
+const { store, persistor } = getStoreAndPersistor()
 
 ReactDOM.render(
-    <ChakraProvider theme={theme}>
-        <GlobalStyle />
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/">
-                    <App />
-                </Route>
-                <Route path="/about">
-                    <div>About</div>
-                </Route>
-            </Switch>
-        </BrowserRouter>
-    </ChakraProvider>,
+    <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+            <ChakraProvider theme={theme}>
+                <GlobalStyle />
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path="/">
+                            <App />
+                        </Route>
+                        <Route path="/about">
+                            <div>About</div>
+                        </Route>
+                        <Route path="/counter">
+                            <Counter />
+                        </Route>
+                    </Switch>
+                </BrowserRouter>
+            </ChakraProvider>
+        </PersistGate>
+    </Provider>,
     document.getElementById("root")
 )
 
