@@ -1,20 +1,26 @@
+import { ChakraProvider } from "@chakra-ui/react"
 import ReactDOM from "react-dom"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 import App from "./App"
 import "./index.css"
+import theme from "./theme"
+import GlobalStyle from "./theme/globalStyle"
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Route exact path="/">
-                <App />
-            </Route>
-            <Route path="/about">
-                <div>About</div>
-            </Route>
-        </Switch>
-    </BrowserRouter>,
+    <ChakraProvider theme={theme}>
+        <GlobalStyle />
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/">
+                    <App />
+                </Route>
+                <Route path="/about">
+                    <div>About</div>
+                </Route>
+            </Switch>
+        </BrowserRouter>
+    </ChakraProvider>,
     document.getElementById("root")
 )
 

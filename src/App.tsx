@@ -1,10 +1,11 @@
-import React from "react"
+import { Box } from "@chakra-ui/react"
+
 import logo from "./logo.svg"
 import "./App.css"
 
 function App() {
     return (
-        <div className="App">
+        <Box className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
@@ -14,7 +15,7 @@ function App() {
                     Learn React
                 </a>
             </header>
-        </div>
+        </Box>
     )
 }
 
